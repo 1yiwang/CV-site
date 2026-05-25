@@ -27,6 +27,7 @@
 | D14 新 | **AI 应用独立子页面** | 新建 `ai.html`：展示 AI Applications & Initiatives，支持 Live Demo / GitHub 外链；主页 nav 加入口；首张内容卡 = AI-Driven Job Search Automation Stack | 见 §2.5 |
 | D15 新 | **Credentials 附录子页面** | 新建 `credentials.html`：分类托管 Languages / Skills & Toolkit / Test Scores & Certificates（GMAT, IELTS）/ References。References 默认 "Available upon request"，未来可换成 PDF 下载卡 | 见 §2.6 |
 | D16 ✓ 修订 | **主页精简** | 删除主页的 Skills & Languages 区块；删除 About 区块；Hero 下方数字 stats band 也已删除，Profile 只保留 impression 内容；导航中 `About` 移除，新增 `Credentials` | 见 §2.1 |
+| D17 提案 (deferred) | **Education 瘦身 + Master Thesis 升级到 Featured** | 用户目前接受现状，先存档不改。详细方案见 §10 Backlog · B1 | 见 §10 |
 
 ---
 
@@ -422,3 +423,100 @@ D1–D11 已敲定 ✓。**进入 Step 1 之前，只剩以下事项：**
 ---
 
 *规划文档结束。回复 D12 + Hero H1 后即可开始 Step 1。*
+
+---
+
+## 10. Backlog · 待选优化提案
+
+> 这一节登记**已讨论过但当前未执行**的优化方案。每条都有一段背景 + 具体改动 + 决策状态。下次想做时直接挑一条说"做 B1"即可。
+
+### B1 · Education 瘦身 + Master Thesis 升级到 Featured
+
+**状态**：2026-05-25 讨论 → **deferred**（用户接受现状）  
+**关联决策**：D17 提案
+
+**背景**  
+对一个 2026 应届生，完全删除 Education 会损失：UZH 品牌、M.A. Management & Economics · Data Science track、GPA 5.0/6、本科 1/56 排名、Best Undergraduate Thesis Award、Master Thesis 题目。用户讨论时倾向"如果重要项目都在 Experience / Featured / AI Lab 里，就可以删 Education"——但盘点下来这些硬信息只在 Education 区出现。结论：**保留但归类更清晰**。把 Education 留下做"学历凭证"展示，把"研究内容"挪出去单独突出。
+
+**两步合并方案 A + B**
+
+**A · Education 瘦身**
+- 保留 2 张卡片（Master / Bachelor）并列布局
+- 每张卡只剩：日期 / 学位 / 学校 / 关键数字（GPA 或排名）
+- **完全删除** "Highlights" bullets 区
+- Bachelor 卡底部增加单个荣誉 chip：`🏆 Best Undergraduate Thesis Award`
+- 视觉效果：Education section 高度减半
+
+**B · Master Thesis 升级**
+- 在 Featured 区的 `Selected Case Studies` 小节里新增第 4 张卡 = Master Thesis
+- 推荐版式 **B-i**：1 大 + 3 小 Bento — Master Thesis 横向占满一行（旗舰卡，左大图标/数据渐变，右文字），下面 UBS / IPZ / Food System 三张同尺寸
+- 卡内容：
+  - Label: `Research · Econometrics`
+  - Title: `Music Market Econometrics (Master Thesis)`
+  - Time chip: `UZH 2025–2026`
+  - 描述：Large-scale econometric research on 77 GB of music market data, combining streaming and chart performance metrics via the Chartmetric and Spotify APIs.
+  - Stack chips: `Python` · `R` · `Chartmetric API` · `Spotify API`
+  - Icon: `analytics` 或 `insights`
+  - CTA: `Case study →`（占位）
+
+**副作用清单**
+- Education Master 卡删除 "Master Thesis…77 GB…" bullet（信息已挪到 Featured）
+- Education Master 卡删除 "UZH Innovathon…IPZ" bullet（已在 Featured 第 2 张 case study）
+- Education Bachelor 卡删除第 2 条 bullet "maintained top-of-cohort…"（与排名 1/56 重复）
+- Education Bachelor 卡保留 "Best Undergraduate Thesis Award" 改为 chip 样式
+- PLAN.md / PROGRESS.md 同步更新 D17 状态
+
+**预期 commit**：`Compact Education and elevate Master Thesis to Featured.`
+
+---
+
+### B2 · AI Lab 占位 CTA 文案优化
+
+**状态**：2026-05-25 提议 → **deferred**
+
+**背景**  
+`ai.html` 里 "Live Demo" 和 "GitHub" 两个按钮的 `href` 都是 `#`，访客点击什么都没发生，体验不好。
+
+**改动建议**（用户提供真实链接前）
+- 把两个按钮改为 `disabled`-style：灰色边框、不可点击、文案改 `Live Demo · Coming soon` 和 `GitHub · Coming soon`
+- 或在按钮下方加一行小字：`Available to share by request — drop me an email.`
+- 一旦用户给出真实 URL，把 `href="#"` 替换并恢复 hover 状态即可
+
+**预期 commit**：`Soften AI Lab CTA placeholders.`
+
+---
+
+### B3 · Experience 占位图文案隐藏文件路径
+
+**状态**：2026-05-25 提议 → **deferred**
+
+**背景**  
+Experience 三段实习的图片占位区现在显示 "Photo · UCEA · Zurich" + "replace at assets/img/exp/ucea.jpg"。第二行暴露了文件路径，对访客（特别是 HR）来说会觉得"网站半成品"。
+
+**改动建议**（用户上传配图前）
+- 删除每张占位图里的第二行 `replace at assets/img/exp/xxx.jpg`
+- 只保留 icon + "Photo · UCEA · Zurich" 这类标识
+- 看起来更像"刻意设计的极简插画"而不是开发占位
+- 一旦用户上传 jpg/png 到对应路径，占位自动被照片覆盖（onerror 隐藏逻辑已经写好）
+
+**预期 commit**：`Tidy Experience photo placeholders.`
+
+---
+
+### B4 · 顶部"Open to roles" 状态条（可选）
+
+**状态**：2026-05-25 简单提及 → **deferred**
+
+**背景**  
+找工作期间常见做法：在 Hero 上方或导航下方加一条细长状态条，例如 `🟢 Open to full-time roles · starting Jul 2026 · Zurich / Remote`。便于访客 5 秒内 get 你的求职状态。
+
+**改动建议**
+- 一行细 banner，浅灰背景 + 绿点指示器 + mono 字体
+- 全站 3 个页面统一显示
+- 找到工作后可一键关闭（注释掉即可）
+
+**预期 commit**：`Add availability status banner.`
+
+---
+
+> 后续优化想法请追加到本节，保持"提案 → 讨论 → 决策"三态可追溯。

@@ -3,13 +3,14 @@
 > **最后更新**：2026-05-25  
 > **当前 commit**：`cc15b49 Add credentials page and streamline profile.`  
 > **本地分支**：`main`（尚未 push 到 GitHub）  
+> **部署状态**：图片与 URL 已接入，下一步 push 到 GitHub + Vercel 部署  
 > 详细架构与决策见 `PLAN.md`；本文件只记录"做到哪 / 下一步"。
 
 ---
 
 ## 一句话状态
 
-主页 + AI 子页 + Credentials 子页三页已成形，内容已用真实 CV 填充，**未抽离 CSS/JS，未配照片，未部署**。
+主页 + AI 子页 + Credentials 子页三页已成形，**真实头像 + 三张实习配图 + AI 截图全部接入**，**Live Demo / GitHub / LinkedIn 真实 URL 已接通**，等待推到 GitHub + Vercel 部署。
 
 ---
 
@@ -21,6 +22,7 @@
 | 1 | 目录骨架 + `index.html` 内容落地（Hero/Education 双卡/Experience zigzag/Case Studies/AI Banner） + 新建 `ai.html` | `33307f8` |
 | 2 | 新增 Leadership & Volunteering（双卡）、Contact；后又被 D15/D16 调整 | `cc15b49` |
 | 2.5 | 新增 `credentials.html`；主页 About 合并进 Profile；移除主页 Skills；导航 + Footer 全面同步 | `cc15b49` |
+| 2.6 | **真实素材接入** + **B3 完成**：`photo.jpg` / 3 张 exp jpg / AI Lab 双截图全部就位；AI Lab Live Demo + GitHub、3 页 Footer LinkedIn + GitHub 全接通；Experience 三处"replace at..."占位文案删除；删除旧草稿 `code.html` | *本次提交* |
 
 ---
 
@@ -51,24 +53,36 @@
 | 高 | 7 | `README.md` + `.gitignore` 完善 + `vercel.json` + GitHub 仓库 + Vercel 部署 | **需用户决定 GitHub 仓库名 + 是否绑定域名** |
 | 低 | 8 | dark mode toggle / Plausible 分析 / 微动效 | 无 |
 
+### 已讨论但暂未执行的改动（Backlog）
+
+详见 `PLAN.md §10`：
+
+- **B1** · Education 瘦身 + Master Thesis 升级到 Featured（A+B 合并方案，最重要的一条）
+- **B2** · AI Lab "Coming soon" 占位 CTA 文案
+- **B3** · Experience 占位图隐藏文件路径提示
+- **B4** · 顶部 "Open to roles" 状态条（找工作期间用）
+
+下次想做随时说"做 B1"或者一起做 B1+B2+B3 都行。
+
 ---
 
 ## 等用户提供的素材
 
-| 素材 | 落位 | 用途 | 优先级 |
-|------|------|------|--------|
-| 职业头像 (jpg/png) | `assets/img/photo.jpg` | Hero 头像 | 高 |
-| UCEA 配图 | `assets/img/exp/ucea.jpg` | Experience zigzag 左图 | 中 |
-| SDIC 配图 | `assets/img/exp/sdic.jpg` | Experience zigzag 右图 | 中 |
-| Abu Dhabi 配图 | `assets/img/exp/abu-dhabi.jpg` | Experience zigzag 左图 | 中 |
-| AI Job Search 截图 | `assets/img/ai/job-search-hero.png` | ai.html 旗舰卡右栏 | 中 |
-| AI Job Search Live Demo URL | `ai.html`（搜 `target="_blank"`） | 替换占位 `#` | 中 |
-| AI Job Search GitHub URL | `ai.html`（同上） | 替换占位 `#` | 中 |
-| GMAT 分数 + PDF | `assets/docs/gmat.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低 |
-| IELTS 分数 + PDF | `assets/docs/ielts.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低 |
-| LinkedIn URL | 3 个 html Footer | 社交链接 | 高 |
-| GitHub 主页 URL | 3 个 html Footer | 社交链接 | 高 |
-| 更多志愿经历（可选） | `index.html` 的 Featured 区中 `Leadership & Volunteering` 小节加新 `<article>` | 用户曾提及还有 | 低 |
+| 素材 | 落位 | 用途 | 状态 |
+|------|------|------|------|
+| 职业头像 | `assets/img/photo.jpg` | Hero 头像 | ✅ 已接入 |
+| UCEA 配图 | `assets/img/exp/ucea.jpg` | Experience zigzag #1 | ✅ 已接入 |
+| SDIC 配图 | `assets/img/exp/sdic.jpg` | Experience zigzag #2 | ✅ 已接入 |
+| Abu Dhabi 配图 | `assets/img/exp/abu-dhabi.jpg` | Experience zigzag #3 | ✅ 已接入 |
+| AI Job Search 截图 | `assets/img/ai/job-search-hero.png` | ai.html 旗舰卡右栏 | ✅ 已接入 |
+| AI Job Search Live Demo URL | `ai.html` | swiss-job-agent vercel.app | ✅ 已接通 |
+| AI Job Search GitHub URL | `ai.html` | github.com/1yiwang/SwissJobAgent | ✅ 已接通 |
+| LinkedIn URL | 3 个 html Footer + index Contact | linkedin.com/in/yi-wang-783513299 | ✅ 已接通 |
+| GitHub 主页 URL | 3 个 html Footer + index Contact | github.com/1yiwang | ✅ 已接通 |
+| **GitHub repo `CV-site`** | 需用户在 github.com 新建空仓库 | 用于部署 | ⏳ **下一步等用户操作** |
+| GMAT 分数 + PDF | `assets/docs/gmat.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
+| IELTS 分数 + PDF | `assets/docs/ielts.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
+| 更多志愿经历（可选） | `index.html` 的 Featured 区中 `Leadership & Volunteering` 小节加新 `<article>` | 用户曾提及还有 | 低优先级 待补 |
 
 ---
 
@@ -84,20 +98,21 @@ d:\cvhtml\
 ├── PROGRESS.md             ✅ 本文件
 ├── DESIGN.md               ✅ 设计系统
 ├── .gitignore              ✅
-├── code.html               ⚠️ 旧模板草稿，未跟踪，可随时删
 ├── screen.png              ⚠️ 视觉参考截图，已被 .gitignore 排除
 ├── stitch_*.zip            ⚠️ 设计素材压缩包，已被 .gitignore 排除
-├── CV.pdf                  ✅
 └── assets/
     ├── css/                📭 空目录（Step 3 填）
     ├── js/                 📭 空目录（Step 3 填）
     ├── i18n/               📭 空目录（Step 4 填）
-    ├── img/                📭 空目录（等素材）
-    │   └── exp/            📭
-    └── (将新增 docs/)      📭 当 GMAT/IELTS PDF 来时建
+    └── img/
+        ├── photo.jpg               ✅ Hero 头像
+        ├── exp/
+        │   ├── ucea.jpg            ✅
+        │   ├── sdic.jpg            ✅
+        │   └── abu-dhabi.jpg       ✅
+        └── ai/
+            └── job-search-hero.png ✅
 ```
-
-未决定：是否在 commit 前删除 `code.html`（旧草稿）— 不影响功能。
 
 ---
 
