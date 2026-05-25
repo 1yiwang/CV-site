@@ -25,6 +25,8 @@
 | D12 ✓ (修订) | **Experience 图文布局** | **之字形 (zigzag) 卡片对**：每段实习一行，左右两块，桌面端图文交错（左图右文 → 右图左文 → 左图右文），移动端单列堆叠（图在上）。图位置先放占位，你后续上传 `assets/img/exp/*.jpg` 即可替换。 | 详见 §2.3 |
 | D13 新 | **Selected Case Studies 区块** | 主页新增并列三卡片：① UBS Inter-University Case Competition 2026 (Zurich, Finalist Top 7%) ② IPZ Digital Mobility (UZH Innovathon) ③ Food System Optimization (MCM 2021 Finalist) | 见 §2.4 |
 | D14 新 | **AI 应用独立子页面** | 新建 `ai.html`：展示 AI Applications & Initiatives，支持 Live Demo / GitHub 外链；主页 nav 加入口；首张内容卡 = AI-Driven Job Search Automation Stack | 见 §2.5 |
+| D15 新 | **Credentials 附录子页面** | 新建 `credentials.html`：分类托管 Languages / Skills & Toolkit / Test Scores & Certificates（GMAT, IELTS）/ References。References 默认 "Available upon request"，未来可换成 PDF 下载卡 | 见 §2.6 |
+| D16 新 | **主页精简** | 删除主页的 Skills & Languages 区块；删除 About 区块，把 3 个数字卡（GPA / 3 Markets / 0→1）作为 Hero 底部 stats band 合并进 Profile；导航中 `About` 移除，新增 `Credentials` | 见 §2.1 |
 
 ---
 
@@ -85,19 +87,28 @@
 
 ### 主页 `index.html`
 单页滚动 + Sticky Header（后期加 EN/DE 切换器） + Mobile Tab Bar：
-1. **Hero**（姓名、定位、头像、CTA：Download CV / Contact）
-2. **About**（叙事段 + 3 个数字卡：GPA 5.0/6、3 countries、Master 2026） — Step 2
-3. **Education**（**双卡片并列**布局，Master / Bachelor）— §2.2
-4. **Experience**（3 段实习，**之字形图文卡片**）— §2.3
-5. **Selected Case Studies**（3 张并列卡片：UBS Case / IPZ / Food System）— §2.4
-6. **AI Initiatives Banner**（banner 风格 CTA，引导跳转到 `ai.html`）— §2.5
-7. **Awards & Leadership** — Step 2
-8. **Skills & Languages** — Step 2
-9. **Contact** — Step 2
-10. **Footer**
+1. **Hero / Profile**（impression：姓名、定位、头像、CTA；底部 stats band：3 数字卡 GPA / 3 Markets / 0→1）— 合并了原 About
+2. **Education**（**双卡片并列**布局，Master / Bachelor）— §2.2
+3. **Experience**（3 段实习，**之字形图文卡片**）— §2.3
+4. **Selected Case Studies**（3 张并列卡片：UBS Case / IPZ / Food System）— §2.4
+5. **AI Initiatives Banner**（banner 风格 CTA，引导跳转到 `ai.html`）— §2.5
+6. **Leadership & Volunteering** — Step 2 修订
+7. **Contact**
+8. **Footer**（含 Credentials 链接）
 
-导航：`Profile · Education · Experience · Cases · AI · Resume(CV.pdf)`  
-移动 Tab Bar 5 项：`Profile · Education · Work · Cases · AI`
+> Skills / Languages / Awards / Certificates / References 全部迁移到 `credentials.html`（§2.6）。
+
+导航：`Profile · Education · Experience · Cases · AI Lab · Leadership · Credentials · Contact · Resume(CV.pdf)`  
+移动 Tab Bar 5 项：`Profile · Education · Work · Cases · AI Lab`（Credentials 仅桌面 + Footer 入口）
+
+### 子页 `credentials.html` — §2.6
+- 简化 header（Logo / 全套 nav / Resume 按钮），`Credentials` 高亮
+- Hero："Credentials & Documents — Languages, toolkit, test scores, and references."
+- 区块：
+  1. **Languages** — 3 张语言水平卡（Mandarin Native / English C1 / German A2–B1）
+  2. **Skills & Toolkit** — 分类 chips：Technical & Analytical（Python, SQL, R, Excel, Financial Modeling, Econometrics）+ AI & Product（Cursor, AI Agents, LLMs, Next.js, Vercel, Convex）
+  3. **Test Scores & Certificates** — GMAT / IELTS 卡片骨架，"View certificate PDF →" 链接占位（你后续上传 `assets/docs/gmat.pdf` 等替换）
+  4. **References** — 默认 "Available upon request" + email CTA；未来加单条推荐人卡（含 PDF 下载）
 
 ### 子页 `ai.html` — §2.5
 - 简化 header（Yi Wang logo / "← Back to portfolio" / Resume 按钮）
