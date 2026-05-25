@@ -68,7 +68,7 @@
 | IELTS 分数 + PDF | `assets/docs/ielts.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低 |
 | LinkedIn URL | 3 个 html Footer | 社交链接 | 高 |
 | GitHub 主页 URL | 3 个 html Footer | 社交链接 | 高 |
-| 更多志愿经历（可选） | `index.html` Leadership 区加新 `<article>` | 用户曾提及还有 | 低 |
+| 更多志愿经历（可选） | `index.html` 的 Featured 区中 `Leadership & Volunteering` 小节加新 `<article>` | 用户曾提及还有 | 低 |
 
 ---
 
@@ -76,7 +76,7 @@
 
 ```
 d:\cvhtml\
-├── index.html              ✅ 主页（Hero+stats / Education / Experience / Cases / AI Banner / Leadership / Contact）
+├── index.html              ✅ 主页（Hero / Education / Experience / Featured / AI Banner / Contact）
 ├── ai.html                 ✅ AI Lab 子页（Job Search Stack 大卡 + 占位区）
 ├── credentials.html        ✅ 凭证页（Languages / Skills / GMAT+IELTS / References）
 ├── CV.pdf                  ✅ 简历，已链通
@@ -123,10 +123,10 @@ d:\cvhtml\
 - Hero 照片：保留位，等用户提供（D5）
 - 暗色模式：本期不做（D8）
 - Experience 布局：之字形图文卡片对（D12 修订版）
-- Selected Case Studies：UBS / IPZ / Food System 三张（D13）
+- Featured Work & Community：合并 Case Studies（UBS / IPZ / Food System）与 Leadership & Volunteering（D13 修订）
 - AI 子页：`ai.html`（D14）
 - Credentials 子页：`credentials.html`（D15）
-- 主页精简：删 About、删 Skills；3 数字卡并入 Profile stats band（D16）
+- 主页精简：删 About、删 Skills；Hero 下方数字 stats band 也已删除（D16 修订）
 
 ---
 

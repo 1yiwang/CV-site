@@ -153,9 +153,8 @@
 <a class="font-caption text-caption text-electric-blue border-b-2 border-electric-blue pb-1" href="#Hero">Profile</a>
 <a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Education">Education</a>
 <a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Experience">Experience</a>
-<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Cases">Cases</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Featured">Featured</a>
 <a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="ai.html">AI Lab</a>
-<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Leadership">Leadership</a>
 <a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="credentials.html">Credentials</a>
 <a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#Contact">Contact</a>
 <a class="bg-primary-container text-on-primary px-6 py-2 rounded font-caption text-caption hover:bg-electric-blue transition-all duration-150 active:opacity-80 inline-flex items-center gap-2" href="CV.pdf" download="Yi-Wang-CV.pdf">
@@ -179,9 +178,9 @@ Resume
 <span class="material-symbols-outlined">work</span>
 <span class="text-[10px] font-medium uppercase tracking-tight">Work</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#Cases">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#Featured">
 <span class="material-symbols-outlined">workspace_premium</span>
-<span class="text-[10px] font-medium uppercase tracking-tight">Cases</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Featured</span>
 </a>
 <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="ai.html">
 <span class="material-symbols-outlined">smart_toy</span>
@@ -189,9 +188,8 @@ Resume
 </a>
 </nav>
 <main class="max-w-max-width mx-auto">
-<!-- Hero Section (Profile = impression + stats band) -->
-<section id="Hero">
-<div class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 px-margin-mobile md:px-margin-desktop pt-8 md:pt-24 pb-12">
+<!-- Hero Section (Profile) -->
+<section class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 px-margin-mobile md:px-margin-desktop pt-8 md:pt-24 pb-12" id="Hero">
 <div class="flex-1 order-1 md:order-2 w-full max-w-sm md:max-w-md">
 <div class="relative group">
 <div class="absolute -inset-4 bg-surface-container-high rounded-xl rotate-1 md:-rotate-2 group-hover:rotate-0 transition-transform duration-500"></div>
@@ -217,27 +215,6 @@ Download CV
 <span class="material-symbols-outlined">mail</span>
 Contact Me
 </a>
-</div>
-</div>
-</div>
-<!-- Hero stats band -->
-<div class="bg-surface-container-low border-t border-border-subtle px-margin-mobile md:px-margin-desktop py-16">
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter">
-<article class="bg-surface-white border border-border-subtle rounded-xl p-6">
-<span class="font-display-lg-mobile text-display-lg-mobile text-primary">5.0</span>
-<p class="font-label-mono text-[11px] uppercase tracking-widest text-electric-blue mt-2">GPA / 6</p>
-<p class="font-body-md text-sm text-on-surface-variant mt-2">UZH Management &amp; Economics, Data Science track.</p>
-</article>
-<article class="bg-surface-white border border-border-subtle rounded-xl p-6">
-<span class="font-display-lg-mobile text-display-lg-mobile text-primary">3</span>
-<p class="font-label-mono text-[11px] uppercase tracking-widest text-electric-blue mt-2">Markets</p>
-<p class="font-body-md text-sm text-on-surface-variant mt-2">Experience across Switzerland, China, and the UAE.</p>
-</article>
-<article class="bg-surface-white border border-border-subtle rounded-xl p-6">
-<span class="font-display-lg-mobile text-display-lg-mobile text-primary">0&rarr;1</span>
-<p class="font-label-mono text-[11px] uppercase tracking-widest text-electric-blue mt-2">Builder</p>
-<p class="font-body-md text-sm text-on-surface-variant mt-2">AI workflows, product surfaces, and data pipelines.</p>
-</article>
 </div>
 </div>
 </section>
@@ -359,13 +336,17 @@ Ranking <span class="font-semibold text-primary">1 / 56</span> &bull; GPA <span 
 </div>
 </div>
 </section>
-<!-- Selected Case Studies Section -->
-<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="Cases">
+<!-- Featured Work & Community Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="Featured">
 <div class="max-w-max-width mx-auto w-full">
-<span class="font-label-mono text-label-mono text-electric-blue uppercase tracking-widest block mb-3">Featured Work</span>
+<span class="font-label-mono text-label-mono text-electric-blue uppercase tracking-widest block mb-3">Beyond the resume</span>
 <h2 class="font-headline-lg text-headline-lg text-primary mb-12 flex items-center gap-4">
-<span class="w-12 h-[2px] bg-electric-blue"></span> Selected Case Studies
+<span class="w-12 h-[2px] bg-electric-blue"></span> Featured Work &amp; Community
 </h2>
+<div class="mb-8 flex items-center justify-between gap-4">
+<h3 class="font-headline-md text-headline-md text-primary">Selected Case Studies</h3>
+<span class="hidden md:block flex-1 h-px bg-border-subtle"></span>
+</div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Case 1: UBS Case Competition -->
 <article class="bento-card bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col">
@@ -410,6 +391,38 @@ Case study <span class="material-symbols-outlined text-base">arrow_forward</span
 </a>
 </article>
 </div>
+<div class="mt-16 md:mt-20 mb-8 flex items-center justify-between gap-4">
+<h3 class="font-headline-md text-headline-md text-primary">Leadership &amp; Volunteering</h3>
+<span class="hidden md:block flex-1 h-px bg-border-subtle"></span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col">
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<span class="font-label-mono text-label-mono text-electric-blue">Sep 2024 — Jul 2025</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Analytics Club at ETH &mdash; Hack4Good</h3>
+<p class="font-body-md text-body-md font-semibold text-on-surface mt-1">Organizing Team &bull; Zurich, Switzerland</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">
+Facilitated project execution between participants and NGOs; managed project timelines and provided operational support to ensure high-quality deliverables.
+</p>
+</article>
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col">
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">volunteer_activism</span>
+</div>
+<span class="font-label-mono text-label-mono text-electric-blue">Jun 2022 — Sep 2022</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Tencent Public Welfare BU</h3>
+<p class="font-body-md text-body-md font-semibold text-on-surface mt-1">Project Management Assistant &bull; Shanghai, China</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4">
+Authored low-carbon community operational guidelines; coordinated 30+ volunteers across universities to scale campus community initiatives.
+</p>
+</article>
+</div>
 </div>
 </section>
 <!-- AI Lab Banner -->
@@ -443,45 +456,8 @@ Enter AI Lab
 </a>
 </div>
 </section>
-<!-- Leadership & Volunteering Section -->
-<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="Leadership">
-<div class="max-w-max-width mx-auto w-full">
-<span class="font-label-mono text-label-mono text-electric-blue uppercase tracking-widest">Community</span>
-<h2 class="font-headline-lg text-headline-lg text-primary mt-3 mb-12 flex items-center gap-4">
-<span class="w-12 h-[2px] bg-electric-blue"></span> Leadership &amp; Volunteering
-</h2>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-<article class="bento-card bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col">
-<div class="flex items-start justify-between mb-5">
-<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">groups</span>
-</div>
-<span class="font-label-mono text-label-mono text-electric-blue">Sep 2024 — Jul 2025</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Analytics Club at ETH &mdash; Hack4Good</h3>
-<p class="font-body-md text-body-md font-semibold text-on-surface mt-1">Organizing Team &bull; Zurich, Switzerland</p>
-<p class="font-body-md text-body-md text-on-surface-variant mt-4">
-Facilitated project execution between participants and NGOs; managed project timelines and provided operational support to ensure high-quality deliverables.
-</p>
-</article>
-<article class="bento-card bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 flex flex-col">
-<div class="flex items-start justify-between mb-5">
-<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">volunteer_activism</span>
-</div>
-<span class="font-label-mono text-label-mono text-electric-blue">Jun 2022 — Sep 2022</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Tencent Public Welfare BU</h3>
-<p class="font-body-md text-body-md font-semibold text-on-surface mt-1">Project Management Assistant &bull; Shanghai, China</p>
-<p class="font-body-md text-body-md text-on-surface-variant mt-4">
-Authored low-carbon community operational guidelines; coordinated 30+ volunteers across universities to scale campus community initiatives.
-</p>
-</article>
-</div>
-</div>
-</section>
 <!-- Contact Section -->
-<section class="py-24 px-margin-mobile md:px-margin-desktop" id="Contact">
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="Contact">
 <div class="max-w-4xl mx-auto text-center">
 <span class="font-label-mono text-label-mono text-electric-blue uppercase tracking-widest">Contact</span>
 <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mt-4">Let&rsquo;s connect.</h2>
