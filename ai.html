@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Lab — Yi Wang</title>
+<meta name="description" content="AI applications and initiatives by Yi Wang. Building practical AI products from 0 to 1 — LLMs, agents, and full-stack systems."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d1e5fa",
+                    "surface-bright": "#f7fafc",
+                    "secondary-container": "#dbdff2",
+                    "on-primary-fixed": "#091d2d",
+                    "on-surface": "#181c1e",
+                    "background": "#f7fafc",
+                    "outline-variant": "#c3c7cc",
+                    "tertiary-container": "#002659",
+                    "secondary": "#595e6e",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#161b29",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-primary": "#b5c9de",
+                    "primary": "#021525",
+                    "on-tertiary-fixed-variant": "#004493",
+                    "secondary-fixed": "#dee2f5",
+                    "surface-container-low": "#f1f4f6",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-primary-container": "#7e91a5",
+                    "on-tertiary-container": "#478cff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-surface-variant": "#43474c",
+                    "border-subtle": "#CDCDCD",
+                    "on-background": "#181c1e",
+                    "surface": "#f7fafc",
+                    "on-secondary-container": "#5d6272",
+                    "secondary-fixed-dim": "#c1c6d8",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#001a41",
+                    "on-secondary-fixed-variant": "#414656",
+                    "tertiary": "#001232",
+                    "primary-container": "#172a3a",
+                    "surface-tint": "#4e6072",
+                    "surface-dim": "#d7dadc",
+                    "surface-container-high": "#e5e9eb",
+                    "electric-blue": "#007AFF",
+                    "outline": "#74777d",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "slate-gray": "#767676",
+                    "on-primary-fixed-variant": "#36495a",
+                    "primary-fixed-dim": "#b5c9de",
+                    "error": "#ba1a1a",
+                    "surface-container": "#ebeef0",
+                    "surface-white": "#FFFFFF"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+                },
+                "spacing": {
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "margin-desktop": "80px",
+                    "gutter": "24px",
+                    "max-width": "1280px"
+                },
+                "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"]
+                },
+                "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .bento-card {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bento-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0px 10px 30px rgba(23, 42, 58, 0.08);
+    }
+    body {
+        min-height: max(884px, 100dvh);
+    }
+</style>
+</head>
+<body class="bg-surface-white text-on-surface font-body-md overflow-x-hidden pb-20 md:pb-0">
+<!-- Desktop Header -->
+<header class="hidden md:block fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-border-subtle">
+<div class="max-w-max-width mx-auto px-margin-desktop flex justify-between items-center h-16">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2 hover:text-electric-blue transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span>Yi Wang</span>
+</a>
+<nav class="flex items-center gap-8">
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="index.html#Education">Education</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="index.html#Experience">Experience</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="index.html#Cases">Case Studies</a>
+<a class="font-caption text-caption text-electric-blue border-b-2 border-electric-blue pb-1" href="ai.html">AI Lab</a>
+<a class="bg-primary-container text-on-primary px-6 py-2 rounded font-caption text-caption hover:bg-electric-blue transition-all duration-150 active:opacity-80 inline-flex items-center gap-2" href="CV.pdf" download="Yi-Wang-CV.pdf">
+<span class="material-symbols-outlined text-base">download</span>
+Resume
+</a>
+</nav>
+</div>
+</header>
+<!-- Mobile Tab Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-lg border-t border-border-subtle h-16 flex items-center justify-around px-4">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="index.html#Hero">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="index.html#Education">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Education</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="index.html#Experience">
+<span class="material-symbols-outlined">work</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Work</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="index.html#Cases">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Cases</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-electric-blue" href="ai.html">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">AI Lab</span>
+</a>
+</nav>
+<main class="max-w-max-width mx-auto">
+<!-- Hero -->
+<section class="px-margin-mobile md:px-margin-desktop pt-28 md:pt-40 pb-16 md:pb-24">
+<a href="index.html" class="font-label-mono text-label-mono text-slate-gray inline-flex items-center gap-2 mb-8 hover:text-electric-blue transition-colors">
+<span class="material-symbols-outlined text-base">arrow_back</span> Back to portfolio
+</a>
+<div class="max-w-3xl">
+<span class="font-label-mono text-label-mono text-electric-blue uppercase tracking-widest inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-base">smart_toy</span> AI Lab &middot; ongoing
+</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight mt-4">
+AI Applications &amp;<br/>Initiatives
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-6">
+Building practical AI products from 0 to 1. This page collects live experiments, full-stack systems, and ongoing explorations of LLMs, agents, and AI-driven workflows.
+</p>
+</div>
+</section>
+<!-- Featured Project: AI Job Search Automation Stack -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24" id="JobSearch">
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
+<!-- Top: meta header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 px-6 md:px-10 pt-8 pb-2 border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="inline-flex w-2 h-2 rounded-full bg-electric-blue animate-pulse"></span>
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-electric-blue">Live &amp; iterating</span>
+</div>
+<span class="font-label-mono text-label-mono text-slate-gray uppercase tracking-widest">May 2026 &mdash; Ongoing</span>
+</div>
+<!-- Body grid: text | screenshot -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+<div class="p-6 md:p-10">
+<h2 class="font-headline-lg text-headline-lg text-primary">AI-Driven Job Search Automation Stack</h2>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Next.js</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vercel</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Convex</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">LLM</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Cursor</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Hermes Agent</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-6">
+End-to-end full-stack platform deployed on Vercel: stored postings &rarr; model scores &rarr; in-app ranking &rarr; shortlisting &rarr; LLM-drafted applications with human review. Streamlines daily hiring operations into a single, scalable product surface.
+</p>
+<div class="mt-8 grid grid-cols-1 gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">bolt</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Pipeline</p>
+<p class="font-body-md text-sm text-on-surface-variant">Postings ingestion &rarr; embeddings &amp; scoring &rarr; ranking &rarr; LLM application drafts &rarr; reviewer surface.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">construction</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Build approach</p>
+<p class="font-body-md text-sm text-on-surface-variant">Iterated tightly with Cursor and the Hermes Agent to keep data pipelines and product UI moving together.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">trending_up</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Next milestone</p>
+<p class="font-body-md text-sm text-on-surface-variant">Evolve from a single-operator tool into a multi-user product.</p>
+</div>
+</div>
+</div>
+<!-- CTA buttons -->
+<div class="mt-10 flex flex-wrap gap-3">
+<a href="#" target="_blank" rel="noopener" class="bg-primary-container text-on-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-electric-blue transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">open_in_new</span>
+Live Demo
+</a>
+<a href="#" target="_blank" rel="noopener" class="border border-border-subtle text-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-surface-container-low transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">code</span>
+GitHub
+</a>
+</div>
+<p class="font-caption text-caption text-slate-gray mt-3">Replace the two links above with your real demo &amp; repo URLs.</p>
+</div>
+<!-- Screenshot column -->
+<div class="relative bg-primary-container min-h-[400px] lg:min-h-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container via-primary to-tertiary opacity-95"></div>
+<div class="absolute -right-12 -top-12 w-72 h-72 rounded-full bg-electric-blue/20 blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center gap-4 px-8 py-12 text-center">
+<span class="material-symbols-outlined text-on-primary" style="font-size:96px;opacity:0.85;">auto_awesome</span>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-inverse-primary">Screenshot placeholder</p>
+<p class="font-caption text-caption text-inverse-primary max-w-xs">Upload product shots to <code class="bg-primary px-1 rounded">assets/img/ai/job-search-*.png</code> &mdash; this panel will auto-host them.</p>
+</div>
+<img src="assets/img/ai/job-search-hero.png" alt="AI Job Search Stack screenshot" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'"/>
+</div>
+</div>
+</article>
+</section>
+<!-- More explorations placeholder -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24">
+<div class="border border-dashed border-border-subtle rounded-xl p-10 md:p-16 text-center bg-surface-container-low/40">
+<span class="material-symbols-outlined text-slate-gray" style="font-size:48px;">science</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-4">More explorations coming.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 max-w-xl mx-auto">
+This space is reserved for upcoming AI experiments &mdash; agents, evaluation harnesses, retrieval systems, and product prototypes.
+</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface border-t border-border-subtle">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-6">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary hover:text-electric-blue transition-colors">Yi Wang</a>
+<div class="font-caption text-caption text-on-surface-variant text-center">
+&copy; 2026 Yi Wang &bull; Built from 0 to 1 in Z&uuml;rich.
+</div>
+<div class="flex gap-6">
+<a class="font-caption text-caption text-on-surface-variant hover:text-electric-blue transition-colors hover:underline decoration-electric-blue active:opacity-70" href="#" aria-label="LinkedIn (to be added)">LinkedIn</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-electric-blue transition-colors hover:underline decoration-electric-blue active:opacity-70" href="#" aria-label="GitHub (to be added)">GitHub</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-electric-blue transition-colors hover:underline decoration-electric-blue active:opacity-70" href="mailto:yi.wang.max@gmail.com">Email</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
