@@ -1,16 +1,16 @@
 # Progress — Yi Wang 个人网站
 
 > **最后更新**：2026-05-25  
-> **当前 commit**：`cc15b49 Add credentials page and streamline profile.`  
-> **本地分支**：`main`（尚未 push 到 GitHub）  
-> **部署状态**：图片与 URL 已接入，下一步 push 到 GitHub + Vercel 部署  
+> **当前 commit**：`55346cd content: settle on hero H1 'theory to product' and drop placeholder case-study links`  
+> **本地分支**：`main`（已 push 到 GitHub `1yiwang/CV-site`）  
+> **部署状态**：✅ Vercel 已上线，每次 `git push` 自动部署  
 > 详细架构与决策见 `PLAN.md`；本文件只记录"做到哪 / 下一步"。
 
 ---
 
 ## 一句话状态
 
-主页 + AI 子页 + Credentials 子页三页已成形，**真实头像 + 三张实习配图 + AI 截图全部接入**，**Live Demo / GitHub / LinkedIn 真实 URL 已接通**，等待推到 GitHub + Vercel 部署。
+三页（主页 + AI Lab + Credentials）**已上线 Vercel**；真实素材 / Live Demo / GitHub / LinkedIn / 头像全部接入并部署。当前阶段：**内容文案 + 字号 / 布局打磨已定版**（详见 Step 2.7）。下一步可推进 Step 3（CSS/JS 抽离）或 Step 7（自定义域名 + SEO meta）。
 
 ---
 
@@ -22,7 +22,42 @@
 | 1 | 目录骨架 + `index.html` 内容落地（Hero/Education 双卡/Experience zigzag/Case Studies/AI Banner） + 新建 `ai.html` | `33307f8` |
 | 2 | 新增 Leadership & Volunteering（双卡）、Contact；后又被 D15/D16 调整 | `cc15b49` |
 | 2.5 | 新增 `credentials.html`；主页 About 合并进 Profile；移除主页 Skills；导航 + Footer 全面同步 | `cc15b49` |
-| 2.6 | **真实素材接入** + **B3 完成**：`photo.jpg` / 3 张 exp jpg / AI Lab 双截图全部就位；AI Lab Live Demo + GitHub、3 页 Footer LinkedIn + GitHub 全接通；Experience 三处"replace at..."占位文案删除；删除旧草稿 `code.html` | *本次提交* |
+| 2.6 | **真实素材接入** + **B3 完成**：`photo.jpg` / 3 张 exp jpg / AI Lab 双截图全部就位；AI Lab Live Demo + GitHub、3 页 Footer LinkedIn + GitHub 全接通；Experience 三处"replace at..."占位文案删除；删除旧草稿 `code.html` | `cc15b49` |
+| 2.7 | **UI 打磨 & 文案定版**：详见下方"近期打磨明细 (Step 2.7)" 小节 | `bb8471d` → `55346cd` |
+
+### 近期打磨明细（Step 2.7）
+
+**导航 & 全局**
+- 去掉桌面导航 `Yi Wang` 旁的 `bolt` 闪电图标
+- `Resume` 按钮 → `Let's talk` CTA（跳 `#Contact`）；删除导航里的 `Contact` 文字链
+- 桌面导航链接字号 12px → 14px
+- Scroll-spy 脚本跳过 `.nav-cta` 类，避免按钮被当作普通链接高亮
+
+**字号体系**
+- Hero H1：30 / 48px（手机 / 桌面）—— 全站唯一保留 48px 的标题
+- Contact H2 "Let's connect."：同步 30 / 48px，与 Hero H1 视觉对齐
+- 其他所有标题（Education / Experience / Featured / AI Lab Banner / Languages / Skills / Test Scores / References / 子页 Hero H1 / Featured Project H2）**统一 30px，不分视口**
+- Volunteering 卡片 H3（Analytics Club / Tencent）24px → 20px，与 Case Study 卡 H3 对齐
+
+**布局 & 响应式**
+- 移动端 Hero 重排：文字 / 介绍 → 照片 → CTA 按钮
+- Hero / Contact CTA 按钮缩小并能并排：`px-4 md:px-8 py-2.5 md:py-4 text-sm md:text-base`
+- Contact 区加 **Download CV** 按钮
+- AI Lab Featured Project 右栏改两张图竖排（`object-contain` + 灰底，不裁切）
+
+**Footer 收口**
+- 三页 Footer 删 social 链接，保留版权 + 单一上下文链接（首页→Credentials、ai→Credentials、credentials→AI Lab）
+- 版权行 `Built from 0 to 1 in Zürich.` → `Built in Zürich, Switzerland.`
+
+**文案定版**
+- Hero chip：`Management, Data Science & AI` → `Economics, Data Science & AI`
+- 页面 `<title>`：`Yi Wang — Economics, Data Science & AI`
+- Hero H1 经历多轮迭代，定版：**`Bridging Finance, Data, and AI — from theory to product.`**
+  - 决策原则：不用 `research`（无学术研究产出）、不用 `real world`（偏幼稚）、不用 `leveraging / empowering / transform business`（套话）、不用 `AI enthusiast`（弱化资历感）
+- Contact blurb 重写为强调 finance × data science × AI 的 intersection
+
+**清理**
+- Selected Case Studies 三张卡（UBS / IPZ / Food System）底部的 `Case study →` 占位链接（`href="#"`）全部删除
 
 ---
 
@@ -50,7 +85,7 @@
 | 中 | 4 | EN / DE 双语切换（`assets/i18n/{en,de}.json` + `i18n.js`） | 无（先做骨架，德文翻译可后补） |
 | 中 | 5 | 头像 + favicon + Open Graph 图 + `<meta>` + `CV.pdf` 缓存策略 | **需用户提供素材**（见下方清单） |
 | 中 | 6 | 可访问性 & 移动端打磨（focus 样式、键盘导航、360/768/1280 自查） | 无 |
-| 高 | 7 | `README.md` + `.gitignore` 完善 + `vercel.json` + GitHub 仓库 + Vercel 部署 | **需用户决定 GitHub 仓库名 + 是否绑定域名** |
+| 高 | 7 | 自定义域名接入 + `README.md` + Open Graph / SEO meta | **需用户挑域名 + 注册商**（GitHub repo 与 Vercel 部署已完成） |
 | 低 | 8 | dark mode toggle / Plausible 分析 / 微动效 | 无 |
 
 ### 已讨论但暂未执行的改动（Backlog）
@@ -59,10 +94,11 @@
 
 - **B1** · Education 瘦身 + Master Thesis 升级到 Featured（A+B 合并方案，最重要的一条）
 - **B2** · AI Lab "Coming soon" 占位 CTA 文案
-- **B3** · Experience 占位图隐藏文件路径提示
+- ~~**B3** · Experience 占位图隐藏文件路径提示~~ ✅ 已完成（Step 2.6）
 - **B4** · 顶部 "Open to roles" 状态条（找工作期间用）
+- **B5** · Case Study 卡片填补真实链接（UBS 决赛报告 / IPZ writeup / MCM 论文 PDF）—— 占位链接已删，等真实材料补回
 
-下次想做随时说"做 B1"或者一起做 B1+B2+B3 都行。
+下次想做随时说"做 B1" 或一起做 B1+B2+B4+B5 都行。
 
 ---
 
@@ -79,7 +115,9 @@
 | AI Job Search GitHub URL | `ai.html` | github.com/1yiwang/SwissJobAgent | ✅ 已接通 |
 | LinkedIn URL | 3 个 html Footer + index Contact | linkedin.com/in/yi-wang-783513299 | ✅ 已接通 |
 | GitHub 主页 URL | 3 个 html Footer + index Contact | github.com/1yiwang | ✅ 已接通 |
-| **GitHub repo `CV-site`** | 需用户在 github.com 新建空仓库 | 用于部署 | ⏳ **下一步等用户操作** |
+| **GitHub repo `CV-site`** | `github.com/1yiwang/CV-site` | 用于部署 | ✅ 已建立 + push |
+| Vercel 部署 | 自动绑定 `main` 分支 | CI/CD | ✅ 已上线，每次 push 自动部署 |
+| **自定义域名** | Vercel project → Domains | 长期 portfolio 入口 | ⏳ **用户决策中**（名字 + 注册商） |
 | GMAT 分数 + PDF | `assets/docs/gmat.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
 | IELTS 分数 + PDF | `assets/docs/ielts.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
 | 更多志愿经历（可选） | `index.html` 的 Featured 区中 `Leadership & Volunteering` 小节加新 `<article>` | 用户曾提及还有 | 低优先级 待补 |
