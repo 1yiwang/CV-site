@@ -10,7 +10,7 @@
 
 ## 一句话状态
 
-三页（主页 + AI Lab + Credentials）**已上线 Vercel**；真实素材 / Live Demo / GitHub / LinkedIn / 头像全部接入并部署。当前阶段：**内容文案 + 字号 / 布局打磨已定版**（详见 Step 2.7）。下一步可推进 Step 3（CSS/JS 抽离）或 Step 7（自定义域名 + SEO meta）。
+三页（主页 + AI Lab + Credentials）**已通过 `yiwang.dev` 上线**；真实素材 / AI Lab Loom demo / GitHub / LinkedIn / 头像 / favicon / Open Graph 全部接入并部署。当前阶段：**内容文案 + 字号 / 布局打磨已定版**（详见 Step 2.7）。下一步可推进 Step 3（CSS/JS 抽离）或补充访问分析。
 
 ---
 
@@ -85,7 +85,7 @@
 | 中 | 4 | EN / DE 双语切换（`assets/i18n/{en,de}.json` + `i18n.js`） | 无（先做骨架，德文翻译可后补） |
 | 中 | 5 | 头像 + favicon + Open Graph 图 + `<meta>` + `CV.pdf` 缓存策略 | **需用户提供素材**（见下方清单） |
 | 中 | 6 | 可访问性 & 移动端打磨（focus 样式、键盘导航、360/768/1280 自查） | 无 |
-| 高 | 7 | 自定义域名接入 + `README.md` + Open Graph / SEO meta | **需用户挑域名 + 注册商**（GitHub repo 与 Vercel 部署已完成） |
+| 高 | 7 | 自定义域名接入 + `README.md` + Open Graph / SEO meta | ✅ `yiwang.dev` 已接入；Open Graph / favicon 已部署 |
 | 低 | 8 | dark mode toggle / Plausible 分析 / 微动效 | 无 |
 
 ### 已讨论但暂未执行的改动（Backlog）
@@ -110,14 +110,13 @@
 | UCEA 配图 | `assets/img/exp/ucea.jpg` | Experience zigzag #1 | ✅ 已接入 |
 | SDIC 配图 | `assets/img/exp/sdic.jpg` | Experience zigzag #2 | ✅ 已接入 |
 | Abu Dhabi 配图 | `assets/img/exp/abu-dhabi.jpg` | Experience zigzag #3 | ✅ 已接入 |
-| AI Job Search 截图 | `assets/img/ai/job-search-hero.png` | ai.html 旗舰卡右栏 | ✅ 已接入 |
-| AI Job Search Live Demo URL | `ai.html` | swiss-job-agent vercel.app | ✅ 已接通 |
-| AI Job Search GitHub URL | `ai.html` | github.com/1yiwang/SwissJobAgent | ✅ 已接通 |
+| AI Job Search Loom demo | `ai.html` | `www.loom.com/share/b382a554d5064c5ebebd1ab4bc4fbf3b` | ✅ 已内嵌 |
+| AI Job Search GitHub URL | `ai.html` | `github.com/1yiwang/swiss-job-agent` | ✅ 已接通 |
 | LinkedIn URL | 3 个 html Footer + index Contact | linkedin.com/in/yi-wang-783513299 | ✅ 已接通 |
 | GitHub 主页 URL | 3 个 html Footer + index Contact | github.com/1yiwang | ✅ 已接通 |
 | **GitHub repo `CV-site`** | `github.com/1yiwang/CV-site` | 用于部署 | ✅ 已建立 + push |
 | Vercel 部署 | 自动绑定 `main` 分支 | CI/CD | ✅ 已上线，每次 push 自动部署 |
-| **自定义域名** | Vercel project → Domains | 长期 portfolio 入口 | ⏳ **用户决策中**（名字 + 注册商） |
+| **自定义域名** | `yiwang.dev` | 长期 portfolio 入口 | ✅ 已接入 Cloudflare + Vercel |
 | GMAT 分数 + PDF | `assets/docs/gmat.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
 | IELTS 分数 + PDF | `assets/docs/ielts.pdf` + 改 `credentials.html` Score 字段 | Certificates 卡 | 低优先级 待补 |
 | 更多志愿经历（可选） | `index.html` 的 Featured 区中 `Leadership & Volunteering` 小节加新 `<article>` | 用户曾提及还有 | 低优先级 待补 |
