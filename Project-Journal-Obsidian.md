@@ -43,6 +43,49 @@ e.g. MVP build, UI polish, architecture refactor, bug fix, productization
 
 ---
 
+## 2026-06-01
+
+### Project Status
+active
+
+### Current Phase
+Live at `yiwang.dev` — small content updates: CV PDF refresh, case study card enrichment, AI Lab CTA adjustment.
+
+### What I Did
+- Updated `CV.pdf` with personal domain `yiwang.dev` and QR code linking to online CV.
+- Added "View Picture" CTA to UBS Inter-University Case Competition card in `index.html`, matching the "View certificate" styling on the MCM card. Image: `assets/img/UBS Case Study.jpeg`.
+- Changed AI Lab's "View on GitHub" button to "View Demo" pointing to `https://jobs.yiwang.dev/` (the AI-Driven Job Search Automation Stack live deployment).
+
+### Files Changed
+- `CV.pdf` — updated with website link + QR code
+- `index.html` — UBS case card: +4 lines ("View picture" link)
+- `assets/img/UBS Case Study.jpeg` — new image asset (280 KB)
+- `ai.html` — button text, link URL, and icon changed (GitHub → Demo)
+
+### Architecture & Key Decisions
+- **UBS card link** uses `material-symbols-outlined: image` icon, not `picture_as_pdf` (which the MCM certificate link uses). Distinction is intentional — one is a JPEG image, the other is a PDF document.
+- **AI Lab CTA** now points to the live product (`jobs.yiwang.dev`) instead of the source repo. The live demo is the primary conversion surface; the GitHub repo link can live elsewhere (e.g. in the footer or a secondary link) if needed.
+- Image path uses space in filename (`UBS Case Study.jpeg`) — works fine in modern browsers but worth noting for any future build tooling.
+
+### Blockers
+None
+
+### Next
+- Step 3 (from legacy `PROGRESS.md`): extract repeated `<style>` + `<script>` + Tailwind config from the 3 HTML files into `assets/css/styles.css` + `assets/js/main.js`.
+- Lower priority: EN/DE i18n, accessibility pass, dark mode toggle, Plausible analytics.
+
+### Notes for Librarian
+- `PDF of Yi Wang.pdf` also exists in `F:\0.0 找工作\3. 瑞士\bridge finance, data\` — that's the working copy used for job applications. The one in `CV-site` repo is the same file synced manually. No automation between the two locations.
+- `jobs.yiwang.dev` is a separate Vercel project (the Next.js/Convex job-search platform), not hosted from this repo.
+
+### New Concepts Discovered
+
+| Concept | Where in code | Why it matters | One-line description |
+|---------|--------------|----------------|---------------------|
+| None | — | — | — |
+
+---
+
 ## 2026-05-30
 
 ### Project Status
