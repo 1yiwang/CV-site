@@ -49,21 +49,36 @@ e.g. MVP build, UI polish, architecture refactor, bug fix, productization
 active
 
 ### Current Phase
-Live at `yiwang.dev` — contact/conversion polish, now connected more directly to the standalone booking site at `meet.yiwang.dev`.
+Live at `yiwang.dev` — contact/conversion polish, AI Lab project presentation, and lightweight visitor telemetry.
 
 ### What I Did
 - Added a `Book a call` CTA to the Hero/Profile area on both desktop and mobile, linking to `https://meet.yiwang.dev` in a new tab.
 - Kept `Contact Me` as the email fallback instead of replacing email entirely, so visitors can choose between scheduling a call and sending an async message.
 - Changed the mobile Hero CTA row from `flex-nowrap` to `flex-wrap` so the added third button does not squeeze on small screens.
 - Reordered the `Let's connect` Contact section so `Download CV` appears last. The new order is: `Book a call` → email → LinkedIn → GitHub → `Download CV`.
+- Updated the first AI Lab project from the earlier `Swiss Job Search & Tracker` framing to the public `Job Match` brand, using the conservative CV-facing copy from `D:\Projects\swiss-job-agent-web\project-description.md`.
+- Replaced the old Loom video embed with the public demo at `https://jobs-demo.yiwang.dev/`, rendered as an auto-scaled live iframe preview plus an `Open Live Demo` CTA.
+- Added an anonymous footer counter across `index.html`, `ai.html`, and `credentials.html`, showing `Visitors` and `Unique IPs`.
+- Connected the counter to Vercel Functions + Upstash Redis, using HyperLogLog for approximate unique counts and salted SHA-256 hashing so raw IPs are never stored.
+- Created the separate `meet-up` planning project and pushed `plans.md` to GitHub for the future Cal.com-based booking setup.
 
 ### Files Changed
 - `index.html` — Hero/Profile desktop and mobile CTA rows now include `Book a call`; Contact section button order adjusted.
+- `ai.html` — first AI Lab card updated to `Job Match`, public demo iframe added, public-facing description/tags/CTA revised, footer counter display added.
+- `credentials.html` — footer counter display added.
+- `api/hit.js` — new Vercel Function for visitor/IP counting via Upstash Redis REST API.
+- `assets/js/visitor-counter.js` — new front-end script that creates an anonymous visitor id, calls `/api/hit`, and renders counts in the footer.
+- `D:\Projects\meet-up\plans.md` — standalone planning document for the Cal.com/`meet.yiwang.dev` booking surface (separate repository).
 
 ### Architecture & Key Decisions
 - **Dual contact path**: `Book a call` becomes easier to discover, but `mailto:` remains available for recruiters or collaborators who need to send context, attachments, or quick asynchronous messages.
 - **CV download is secondary in Contact**: in the dedicated `Let's connect` area, the primary intent is conversation and external profiles; CV download is still available but no longer interrupts the contact flow.
 - **Cross-project integration**: `CV-site` now routes more prominently to the separate `meet-up` project via the production subdomain `meet.yiwang.dev`.
+- **Public demo over video**: the `Job Match` card now embeds `jobs-demo.yiwang.dev` directly instead of relying on a Loom recording. The demo uses sample data and better matches the current product state.
+- **Conservative public framing**: `Job Match` is presented as a ranking, tracking, and feedback tool. Owner-only cover-letter/outreach functionality remains out of the public copy.
+- **Static site plus tiny API**: the site stays mostly static, but Vercel's `api/` function adds the minimum server-side layer needed for counters.
+- **Privacy-preserving metrics**: unique IPs are counted via salted hashes and HyperLogLog, not by storing raw IP addresses or visitor logs.
+- **Footer placement**: visitor stats live under the copyright line, centered and using the same footer typography so they read as quiet metadata rather than a primary content block.
 
 ### Blockers
 None.
@@ -71,15 +86,22 @@ None.
 ### Next
 - Verify the deployed `yiwang.dev` Hero buttons on desktop and mobile after push.
 - Optional: decide later whether Hero should make `Book a call` the visual primary CTA instead of `Download CV` (currently intentionally left unchanged per user choice).
+- Verify the deployed visitor counter after Vercel finishes deploying and the Upstash environment variables are active.
+- If desired later, add Vercel Web Analytics for anonymous aggregate trends (country/device/referrer), while keeping the public footer counter simple.
 
 ### Notes for Librarian
 - Cross-project link: `CV-site` is the personal portfolio front door; `meet-up` is now the dedicated booking surface. The pair forms a small site matrix: `yiwang.dev` for profile/discovery, `meet.yiwang.dev` for scheduling.
+- Sister-project link: `swiss-job-agent-web` now defines the public `Job Match` copy and separates internal/full functionality from CV-safe wording.
+- Sister-project link: `ai-builders-digest` powers the second AI Lab card, with the public magazine at `https://ainews.yiwang.dev/`.
+- New standalone repository: `https://github.com/1yiwang/meet-up` stores the Cal.com booking plan, not custom booking code.
 
 ### New Concepts Discovered
 
 | Concept | Where in code | Why it matters | One-line description |
 |---------|--------------|----------------|---------------------|
-| None | — | — | — |
+| Vercel Function on a static site | `api/hit.js` | Adds a tiny server-side capability without turning the portfolio into a full app | A file under `api/` becomes a deployable Vercel serverless endpoint used by the static pages. |
+| HyperLogLog visitor counting | `api/hit.js` | Enables privacy-preserving approximate unique counts without storing per-visitor rows | Redis `PFADD`/`PFCOUNT` tracks unique visitors and hashed IPs with small memory usage and acceptable approximate accuracy. |
+| Anonymous client visitor id | `assets/js/visitor-counter.js` | Separates browser-level visitor counting from raw IP counting | A UUID stored in `localStorage` lets repeat visits from the same browser count once while avoiding identity collection. |
 
 ---
 
