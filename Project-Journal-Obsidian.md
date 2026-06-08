@@ -43,6 +43,46 @@ e.g. MVP build, UI polish, architecture refactor, bug fix, productization
 
 ---
 
+## 2026-06-08
+
+### Project Status
+active
+
+### Current Phase
+Live at `yiwang.dev` — contact/conversion polish, now connected more directly to the standalone booking site at `meet.yiwang.dev`.
+
+### What I Did
+- Added a `Book a call` CTA to the Hero/Profile area on both desktop and mobile, linking to `https://meet.yiwang.dev` in a new tab.
+- Kept `Contact Me` as the email fallback instead of replacing email entirely, so visitors can choose between scheduling a call and sending an async message.
+- Changed the mobile Hero CTA row from `flex-nowrap` to `flex-wrap` so the added third button does not squeeze on small screens.
+- Reordered the `Let's connect` Contact section so `Download CV` appears last. The new order is: `Book a call` → email → LinkedIn → GitHub → `Download CV`.
+
+### Files Changed
+- `index.html` — Hero/Profile desktop and mobile CTA rows now include `Book a call`; Contact section button order adjusted.
+
+### Architecture & Key Decisions
+- **Dual contact path**: `Book a call` becomes easier to discover, but `mailto:` remains available for recruiters or collaborators who need to send context, attachments, or quick asynchronous messages.
+- **CV download is secondary in Contact**: in the dedicated `Let's connect` area, the primary intent is conversation and external profiles; CV download is still available but no longer interrupts the contact flow.
+- **Cross-project integration**: `CV-site` now routes more prominently to the separate `meet-up` project via the production subdomain `meet.yiwang.dev`.
+
+### Blockers
+None.
+
+### Next
+- Verify the deployed `yiwang.dev` Hero buttons on desktop and mobile after push.
+- Optional: decide later whether Hero should make `Book a call` the visual primary CTA instead of `Download CV` (currently intentionally left unchanged per user choice).
+
+### Notes for Librarian
+- Cross-project link: `CV-site` is the personal portfolio front door; `meet-up` is now the dedicated booking surface. The pair forms a small site matrix: `yiwang.dev` for profile/discovery, `meet.yiwang.dev` for scheduling.
+
+### New Concepts Discovered
+
+| Concept | Where in code | Why it matters | One-line description |
+|---------|--------------|----------------|---------------------|
+| None | — | — | — |
+
+---
+
 ## 2026-06-01
 
 ### Project Status
