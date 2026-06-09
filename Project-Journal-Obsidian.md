@@ -43,6 +43,54 @@ e.g. MVP build, UI polish, architecture refactor, bug fix, productization
 
 ---
 
+## 2026-06-09
+
+### Project Status
+active
+
+### Current Phase
+Live at `yiwang.dev` — CV page content polish, credentials layout refinement, and AI Lab copy calibration.
+
+### What I Did
+- Refined the `credentials.html` page into a cleaner document hub: removed filler subtitle text, simplified the hero title, and removed the low-value `CEFR levels` label.
+- Rebuilt `Skills & Toolkit` from pill tags into a two-column text matrix for `Technical & Analytical` and `AI & Product`, adding `Claude Code` and `Supabase`.
+- Reworked `Languages` and `Tests & Certificates` into matching three-column rows for item, score, and certificate link; added `IELTS` and `GMAT` PDF links and set GMAT score to `680`.
+- Simplified the `References` section into two clear lines plus matching dark CTA buttons for email and `Book a call`.
+- Updated homepage Education/Featured/Contact copy: adjusted UZH Innovathon punctuation, UBS competition wording, AI Lab banner wording, and the contact focus line.
+- Updated AI Lab page positioning copy and project date labels, removing `full-stack` phrasing and replacing ongoing date labels with concrete May / May-June 2026 ranges.
+
+### Files Changed
+- `credentials.html` — credentials page layout, copy, skills matrix, language/certificate rows, references copy and CTAs.
+- `index.html` — Education highlights, UBS competition copy, Featured AI Lab banner, and Contact wording.
+- `ai.html` — AI Lab hero wording and project date labels.
+- `assets/docs/IELTS.pdf` — public IELTS certificate file linked from `credentials.html`.
+- `assets/docs/GMAT-Report.pdf` — public GMAT report file linked from `credentials.html`.
+
+### Architecture & Key Decisions
+- **Plain HTML over new components**: kept the static-site structure intact and made targeted HTML/Tailwind edits instead of introducing a shared component layer.
+- **Public framing stays conservative**: AI work is described as systems, workflows, agents, demos, and harness frameworks, avoiding over-claiming phrases like `full-stack`.
+- **Credentials as scannable proof**: language levels and certificate links now use a compact table-like layout so recruiters can scan the evidence quickly.
+- **Contact CTAs stay consistent**: reference/email and booking links use the same dark button treatment as the main contact CTAs for visual consistency.
+
+### Blockers
+None.
+
+### Next
+- Review the deployed pages after Vercel finishes deploying, especially `credentials.html` on desktop and mobile.
+- If the AI Lab/Featured copy still feels too broad, replace `harness frameworks` with a more concrete phrase once the next AI project is public.
+
+### Notes for Librarian
+- The CV site is converging toward a cleaner public narrative: data science, AI, and finance, with proof points split across homepage projects, AI Lab, and credentials.
+- Credentials now include public PDFs for IELTS and GMAT, so future privacy/public-document decisions should consider that these files are deployable assets.
+
+### New Concepts Discovered
+
+| Concept | Where in code | Why it matters | One-line description |
+|---------|--------------|----------------|---------------------|
+| None | — | — | — |
+
+---
+
 ## 2026-06-08
 
 ### Project Status
