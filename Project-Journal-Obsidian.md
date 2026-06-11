@@ -61,14 +61,16 @@ Live at `yiwang.dev` — AI Lab expansion: added a third project card (`Scheduli
 - Did not expose the real version (`calendar.yiwang.dev`); only the demo is linked via a single `Open Live Demo` CTA.
 - Fixed the phone demo being shifted right on mobile: the scaling script was basing scale on the parent `clientWidth` (which includes the `px-4` padding), so the frame overflowed. Now it resets the wrap width, measures real available width, then scales and centers with `margin: 0 auto`.
 - Reordered the three AI Lab cards from oldest-first to newest-first: `Scheduling Agent` (June) -> `AI Builders Digest` (May-June) -> `Job Match` (May).
+- Added a short origin-story quote under the `Scheduling Agent` title: the project was sparked by a networking conversation with a founder who wanted a calendar that actively manages time and understands context, e.g. a train ride can fit a low-priority meeting while a flight cannot.
 
 ### Files Changed
-- `ai.html` — new `Scheduling Agent` section (meta header, phone-sized demo iframe, title/tags, three feature boxes, demo CTA) plus a second scaling IIFE for `calendarFrame`; centering fix in that IIFE; card order changed to newest-first.
+- `ai.html` — new `Scheduling Agent` section (meta header, phone-sized demo iframe, title/tags, origin-story quote, three feature boxes, demo CTA) plus a second scaling IIFE for `calendarFrame`; centering fix in that IIFE; card order changed to newest-first.
 
 ### Architecture & Key Decisions
 - **Mobile-only demo, consistent layout**: kept the top-to-bottom card rhythm of the other two cards but rendered the demo as a centered phone frame to respect the demo being mobile-only, avoiding a stretched desktop iframe.
 - **Separate scaling script**: left the Job Match `demoFrame` IIFE (`BASE_W=1440`) untouched and added an independent IIFE for `calendarFrame` so the two frames never interfere.
 - **Honest framing over hype**: status badge and copy signal demo-viewable-but-not-yet-usable, consistent with the conservative public framing used across the site.
+- **Real user pain before feature list**: added the founder/networking origin line as a visible quote under the project title, so the project reads as a response to a concrete scheduling problem rather than a generic agent demo.
 - **Source of truth**: card content distilled from `D:\Projects\scheduling-agent\product-description.md` (Agent Loop, six detectors, propose-only, Tier-1 learning).
 
 ### Blockers
@@ -81,6 +83,7 @@ None.
 ### Notes for Librarian
 - Sister-project link: `scheduling-agent` (at `D:\Projects\scheduling-agent`) now powers the third AI Lab card; public demo at `calendar-demo.yiwang.dev`, real version `calendar.yiwang.dev` deliberately not yet linked.
 - AI Lab now hosts three cards: `Job Match`, `AI Builders Digest`, `Scheduling Agent` — the portfolio's agent/automation narrative is filling out.
+- The Scheduling Agent public story now includes its networking-event origin: a founder's calendar chaos and travel-context nuance (train vs flight) became the anchor for explaining proactive time management.
 
 ### New Concepts Discovered
 
