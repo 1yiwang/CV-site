@@ -59,9 +59,11 @@ Live at `yiwang.dev` — AI Lab expansion: added a third project card (`Scheduli
 - Used honest status wording `Live demo · agent loop in design` rather than `Live & iterating`, so the card does not imply the product is directly usable yet.
 - Rewrote the card copy to match the natural, jargon-light tone of the first two cards, emphasizing a proactive scheduling agent that helps you run your day; removed all em dashes per preference. Trimmed the three feature boxes (`Perceive` / `Decide` / `Learn`) for balanced length.
 - Did not expose the real version (`calendar.yiwang.dev`); only the demo is linked via a single `Open Live Demo` CTA.
+- Fixed the phone demo being shifted right on mobile: the scaling script was basing scale on the parent `clientWidth` (which includes the `px-4` padding), so the frame overflowed. Now it resets the wrap width, measures real available width, then scales and centers with `margin: 0 auto`.
+- Reordered the three AI Lab cards from oldest-first to newest-first: `Scheduling Agent` (June) -> `AI Builders Digest` (May-June) -> `Job Match` (May).
 
 ### Files Changed
-- `ai.html` — new `Scheduling Agent` section (meta header, phone-sized demo iframe, title/tags, three feature boxes, demo CTA) plus a second scaling IIFE for `calendarFrame`.
+- `ai.html` — new `Scheduling Agent` section (meta header, phone-sized demo iframe, title/tags, three feature boxes, demo CTA) plus a second scaling IIFE for `calendarFrame`; centering fix in that IIFE; card order changed to newest-first.
 
 ### Architecture & Key Decisions
 - **Mobile-only demo, consistent layout**: kept the top-to-bottom card rhythm of the other two cards but rendered the demo as a centered phone frame to respect the demo being mobile-only, avoiding a stretched desktop iframe.
