@@ -43,6 +43,51 @@ e.g. MVP build, UI polish, architecture refactor, bug fix, productization
 
 ---
 
+## 2026-06-11
+
+### Project Status
+active
+
+### Current Phase
+Live at `yiwang.dev` — AI Lab expansion: added a third project card (`Scheduling Agent`) with a mobile-only live demo.
+
+### What I Did
+- Added a third AI Lab project card, `Scheduling Agent`, between `AI Builders Digest` and the `More explorations` placeholder, reusing the existing `bento-card` structure for visual consistency.
+- Embedded the public demo `calendar-demo.yiwang.dev` as a centered, phone-sized iframe instead of a full-width desktop frame, since the demo is currently mobile-only.
+- Wrote a dedicated scaling IIFE for the calendar frame (separate from the existing Job Match desktop-frame script), using `scale = min(1, parentWidth / BASE_W)` so it stays at real phone size on desktop, centers, and shrinks without overflow on narrow screens.
+- Sized the device frame to `375x667` (iPhone SE / 8 proportions) after the initial `390x844` felt too tall in the card.
+- Used honest status wording `Live demo · agent loop in design` rather than `Live & iterating`, so the card does not imply the product is directly usable yet.
+- Rewrote the card copy to match the natural, jargon-light tone of the first two cards, emphasizing a proactive scheduling agent that helps you run your day; removed all em dashes per preference. Trimmed the three feature boxes (`Perceive` / `Decide` / `Learn`) for balanced length.
+- Did not expose the real version (`calendar.yiwang.dev`); only the demo is linked via a single `Open Live Demo` CTA.
+
+### Files Changed
+- `ai.html` — new `Scheduling Agent` section (meta header, phone-sized demo iframe, title/tags, three feature boxes, demo CTA) plus a second scaling IIFE for `calendarFrame`.
+
+### Architecture & Key Decisions
+- **Mobile-only demo, consistent layout**: kept the top-to-bottom card rhythm of the other two cards but rendered the demo as a centered phone frame to respect the demo being mobile-only, avoiding a stretched desktop iframe.
+- **Separate scaling script**: left the Job Match `demoFrame` IIFE (`BASE_W=1440`) untouched and added an independent IIFE for `calendarFrame` so the two frames never interfere.
+- **Honest framing over hype**: status badge and copy signal demo-viewable-but-not-yet-usable, consistent with the conservative public framing used across the site.
+- **Source of truth**: card content distilled from `D:\Projects\scheduling-agent\product-description.md` (Agent Loop, six detectors, propose-only, Tier-1 learning).
+
+### Blockers
+None.
+
+### Next
+- Verify the deployed AI Lab page after Vercel finishes, especially the phone-frame demo on desktop and narrow mobile.
+- Revisit once the real version (`calendar.yiwang.dev`) is stable enough to expose, or once the demo gains a desktop layout.
+
+### Notes for Librarian
+- Sister-project link: `scheduling-agent` (at `D:\Projects\scheduling-agent`) now powers the third AI Lab card; public demo at `calendar-demo.yiwang.dev`, real version `calendar.yiwang.dev` deliberately not yet linked.
+- AI Lab now hosts three cards: `Job Match`, `AI Builders Digest`, `Scheduling Agent` — the portfolio's agent/automation narrative is filling out.
+
+### New Concepts Discovered
+
+| Concept | Where in code | Why it matters | One-line description |
+|---------|--------------|----------------|---------------------|
+| Phone-frame iframe embed | `ai.html` | Lets a mobile-only demo sit cleanly inside a desktop card without stretching | A centered fixed-ratio device frame (`375x667`) scaled by `min(1, parentWidth/BASE_W)` so it shrinks but never upscales. |
+
+---
+
 ## 2026-06-09
 
 ### Project Status

@@ -329,6 +329,71 @@ View Magazine
 </div>
 </article>
 </section>
+<!-- Featured Project: Scheduling Agent -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24" id="SchedulingAgent">
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
+<!-- Top: meta header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 px-6 md:px-10 pt-8 pb-2 border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="inline-flex w-2 h-2 rounded-full bg-electric-blue animate-pulse"></span>
+<span class="font-label-mono text-label-mono uppercase tracking-widest text-electric-blue">Live demo &middot; agent loop in design</span>
+</div>
+<span class="font-label-mono text-label-mono text-slate-gray uppercase tracking-widest">June 2026</span>
+</div>
+<!-- Live demo: mobile-sized iframe -->
+<div class="bg-surface-container-high px-4 py-6 md:px-10 md:py-10">
+<div id="calendarFrameWrap" class="mx-auto rounded-[2rem] overflow-hidden shadow-lg border border-border-subtle bg-surface-white relative">
+<iframe id="calendarFrame" src="https://calendar-demo.yiwang.dev/" title="Scheduling Agent mobile demo" loading="lazy" scrolling="no" class="border-0" style="transform-origin: top left;"></iframe>
+</div>
+<p class="font-label-mono text-label-mono text-slate-gray text-center mt-3">Mobile demo with sample data &middot; opens best on a phone</p>
+</div>
+<!-- Project details -->
+<div class="p-6 md:p-10">
+<h2 class="text-3xl leading-tight tracking-tight font-bold text-primary">Scheduling Agent</h2>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Supabase</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Postgres + RLS</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vercel</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">LLM (BYO-key)</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Agent Loop</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vanilla JS</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-6">
+A proactive scheduling agent that helps you run your day. It quietly watches your calendar in the background and catches the things an ordinary calendar never warns you about, like a deadline with no time blocked for it, three meetings back to back, or an afternoon that is quietly overloaded. For each one it drafts a fix you can accept with a single tap, and every time you accept or pass it learns a little more about how you actually like to work and live.
+</p>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">visibility</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Perceive</p>
+<p class="font-body-md text-sm text-on-surface-variant">Six detectors watch for deadline risks, conflicts, follow-ups, and overloaded days.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">psychology</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Decide</p>
+<p class="font-body-md text-sm text-on-surface-variant">It drafts a fix and proposes it. You stay in control and just confirm or pass.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">trending_up</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Learn</p>
+<p class="font-body-md text-sm text-on-surface-variant">Every accept or pass tunes your preferences, so it fits your day better over time.</p>
+</div>
+</div>
+</div>
+<!-- CTA buttons -->
+<div class="mt-10 flex flex-wrap gap-3">
+<a href="https://calendar-demo.yiwang.dev/" target="_blank" rel="noopener" class="bg-primary-container text-on-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-electric-blue transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">open_in_new</span>
+Open Live Demo
+</a>
+</div>
+</div>
+</article>
+</section>
 <!-- More explorations placeholder -->
 <section class="px-margin-mobile md:px-margin-desktop pb-24">
 <div class="border border-dashed border-border-subtle rounded-xl p-10 md:p-16 text-center bg-surface-container-low/40">
@@ -366,6 +431,24 @@ This space is reserved for upcoming AI experiments &mdash; agents, evaluation ha
       frame.style.height = BASE_H + "px";
       frame.style.transform = "scale(" + scale + ")";
       wrap.style.height = BASE_H * scale + "px";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  })();
+  (function () {
+    var BASE_W = 375;
+    var BASE_H = 667;
+    var wrap = document.getElementById("calendarFrameWrap");
+    var frame = document.getElementById("calendarFrame");
+    if (!wrap || !frame) return;
+    function fit() {
+      var scale = Math.min(1, wrap.parentElement.clientWidth / BASE_W);
+      frame.style.width = BASE_W + "px";
+      frame.style.height = BASE_H + "px";
+      frame.style.transform = "scale(" + scale + ")";
+      wrap.style.width = BASE_W * scale + "px";
+      wrap.style.height = BASE_H * scale + "px";
+      wrap.style.margin = "0 auto";
     }
     fit();
     window.addEventListener("resize", fit);
