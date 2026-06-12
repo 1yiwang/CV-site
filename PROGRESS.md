@@ -1,7 +1,7 @@
 # Progress — Yi Wang 个人网站
 
-> **最后更新**：2026-05-25  
-> **当前 commit**：`55346cd content: settle on hero H1 'theory to product' and drop placeholder case-study links`  
+> **最后更新**：2026-06-12
+> **当前 commit**：`design: refine hero copy and typography system`
 > **本地分支**：`main`（已 push 到 GitHub `1yiwang/CV-site`）  
 > **部署状态**：✅ Vercel 已上线，每次 `git push` 自动部署  
 > 详细架构与决策见 `PLAN.md`；本文件只记录"做到哪 / 下一步"。
@@ -10,7 +10,7 @@
 
 ## 一句话状态
 
-三页（主页 + AI Lab + Credentials）**已通过 `yiwang.dev` 上线**；真实素材 / AI Lab Loom demo / GitHub / LinkedIn / 头像 / favicon / Open Graph 全部接入并部署。当前阶段：**内容文案 + 字号 / 布局打磨已定版**（详见 Step 2.7）。下一步可推进 Step 3（CSS/JS 抽离）或补充访问分析。
+三页（主页 + AI Lab + Credentials）**已通过 `yiwang.dev` 上线**；真实素材 / AI Lab Loom demo / GitHub / LinkedIn / 头像 / favicon / Open Graph 全部接入并部署。当前阶段：**Hero 文案、座右铭和元信息字体系统已完成新一轮精修**（详见 Step 2.8）。下一步可推进 Step 3（CSS/JS 抽离）或补充访问分析。
 
 ---
 
@@ -24,6 +24,7 @@
 | 2.5 | 新增 `credentials.html`；主页 About 合并进 Profile；移除主页 Skills；导航 + Footer 全面同步 | `cc15b49` |
 | 2.6 | **真实素材接入** + **B3 完成**：`photo.jpg` / 3 张 exp jpg / AI Lab 双截图全部就位；AI Lab Live Demo + GitHub、3 页 Footer LinkedIn + GitHub 全接通；Experience 三处"replace at..."占位文案删除；删除旧草稿 `code.html` | `cc15b49` |
 | 2.7 | **UI 打磨 & 文案定版**：详见下方"近期打磨明细 (Step 2.7)" 小节 | `bb8471d` → `55346cd` |
+| 2.8 | **Hero 与字体系统精修**：新版 Hero bio、自动化座右铭、暗金引用线、全站元信息字体去模板化 | 本次提交 |
 
 ### 近期打磨明细（Step 2.7）
 
@@ -58,6 +59,21 @@
 
 **清理**
 - Selected Case Studies 三张卡（UBS / IPZ / Food System）底部的 `Case study →` 占位链接（`href="#"`）全部删除
+
+### Hero 与字体系统精修（Step 2.8）
+
+**Hero 文案 & Motto**
+- Hero bio 改为第一人称版本：强调 UZH Management & Economics + Data Science track、AI-native products from 0 to 1、founder's mindset、automation obsession、多地域背景与 finance/data/AI 交叉视角
+- Bio 下新增座右铭引用块：`Anything you do more than twice, automate it.`
+- 座右铭出处采用更准确的化用标注：`Engineering proverb, after Martin Fowler's Rule of Three`
+- 引用视觉：Newsreader 斜体正文 + 右对齐出处 + 低饱和暗金 / 香槟金左边线
+
+**字体与元信息系统**
+- Hero 主标题回到现代无衬线 Inter，避免粗衬线过重、过传统
+- 静态眉标 / 日期 / 图注 / 分类标签统一从 JetBrains Mono 转为 Inter editorial 样式，减少"AI 模板感"
+- 引入 `slate-blue` (`#475569`) 作为静态元信息色：比死灰更有蓝色底蕴，与主标题深藏青形成同色系层次
+- 日期统一使用 Inter + `tabular-nums` + `&ndash;` 区间写法，保留整齐感但去掉代码感
+- `credentials.html` 的语言等级 / GMAT 分数也去掉等宽体；`ai.html` 的技术栈 chips 仍保留 mono，作为工程标签的有意表达
 
 ---
 
