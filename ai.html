@@ -198,6 +198,74 @@ Building practical AI systems from 0 to 1. This page features live experiments a
 </p>
 </div>
 </section>
+<!-- Featured Project: Client Sourcing -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24" id="ClientSourcing">
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
+<!-- Top: meta header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 px-6 md:px-10 pt-8 pb-2 border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="inline-flex w-2 h-2 rounded-full bg-electric-blue animate-pulse"></span>
+<span class="text-[12px] font-semibold uppercase tracking-[0.16em] text-slate-blue">Live demo &middot; iterating</span>
+</div>
+<span class="text-[13px] font-medium tracking-wide text-slate-blue tabular-nums">August 2026</span>
+</div>
+<!-- Live demo: public sample-data version -->
+<div class="bg-surface-container-high px-4 py-6 md:px-10 md:py-10">
+<div id="sourcingFrameWrap" class="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg border border-border-subtle bg-surface-white relative">
+<iframe id="sourcingFrame" src="https://sourcing-demo.yiwang.dev/find/companies" title="Client Sourcing public demo" loading="lazy" scrolling="no" class="border-0" style="transform-origin: top left;"></iframe>
+</div>
+<p class="text-[13px] font-medium tracking-wide text-slate-gray text-center mt-3">Public demo with sample data &middot; Open Live Demo starts on the cover &mdash; click Open desk to enter</p>
+</div>
+<!-- Project details -->
+<div class="p-6 md:p-10">
+<h2 class="text-3xl leading-tight tracking-tight font-bold text-primary">Client Sourcing</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-5 border-l-2 border-electric-blue pl-4 italic">
+A SaaS B2B sales workbench that sources your next clients.
+</p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Next.js</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vercel</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Postgres</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Python</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">JobSpy</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Embeddings</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-6">
+In SaaS sales, the real bottleneck is finding the companies that are most likely to need your product right now. Client Sourcing looks for public demand signals, such as relevant hiring activity on LinkedIn, recent funding, or other business events that suggest active budget and urgency. It turns those signals into structured company records and ranks them against your ICP, so sales teams can focus on the accounts with the strongest potential for cooperation.
+</p>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">sensors</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Signal</p>
+<p class="font-body-md text-sm text-on-surface-variant">LinkedIn hiring, funding, and major strategy shifts, with room for more public events later.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">neurology</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Match</p>
+<p class="font-body-md text-sm text-on-surface-variant">Layer 1 is a hard filter. Layer 2 vectorizes the text for a deeper match between your ICP and the demand.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">database</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Desk</p>
+<p class="font-body-md text-sm text-on-surface-variant">Companies and signals are stored in Postgres, one reusable row per account.</p>
+</div>
+</div>
+</div>
+<!-- CTA buttons -->
+<div class="mt-10 flex flex-wrap gap-3">
+<a href="https://sourcing-demo.yiwang.dev/" target="_blank" rel="noopener" class="bg-primary-container text-on-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-electric-blue transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">open_in_new</span>
+Open Live Demo
+</a>
+</div>
+</div>
+</article>
+</section>
 <!-- Featured Project: Scheduling Agent -->
 <section class="px-margin-mobile md:px-margin-desktop pb-24" id="SchedulingAgent">
 <article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
@@ -423,6 +491,22 @@ This space is reserved for upcoming AI experiments &mdash; agents, evaluation ha
 </div>
 </footer>
 <script>
+  (function () {
+    var BASE_W = 1440;
+    var BASE_H = 900;
+    var wrap = document.getElementById("sourcingFrameWrap");
+    var frame = document.getElementById("sourcingFrame");
+    if (!wrap || !frame) return;
+    function fit() {
+      var scale = wrap.clientWidth / BASE_W;
+      frame.style.width = BASE_W + "px";
+      frame.style.height = BASE_H + "px";
+      frame.style.transform = "scale(" + scale + ")";
+      wrap.style.height = BASE_H * scale + "px";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  })();
   (function () {
     var BASE_W = 1440;
     var BASE_H = 900;
