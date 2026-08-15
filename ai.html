@@ -198,8 +198,8 @@ Building practical AI systems from 0 to 1. This page features live experiments a
 </p>
 </div>
 </section>
-<!-- Featured Project: Client Sourcing -->
-<section class="px-margin-mobile md:px-margin-desktop pb-24" id="ClientSourcing">
+<!-- Featured Project: SignalDesk -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24" id="SignalDesk">
 <article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
 <!-- Top: meta header -->
 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 px-6 md:px-10 pt-8 pb-2 border-b border-border-subtle">
@@ -212,47 +212,48 @@ Building practical AI systems from 0 to 1. This page features live experiments a
 <!-- Live demo: public sample-data version -->
 <div class="bg-surface-container-high px-4 py-6 md:px-10 md:py-10">
 <div id="sourcingFrameWrap" class="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg border border-border-subtle bg-surface-white relative">
-<iframe id="sourcingFrame" src="https://sourcing-demo.yiwang.dev/find/companies" title="Client Sourcing public demo" loading="lazy" scrolling="no" class="border-0" style="transform-origin: top left;"></iframe>
+<iframe id="sourcingFrame" src="https://sourcing-demo.yiwang.dev/find/companies" title="SignalDesk public demo" loading="lazy" scrolling="no" class="border-0" style="transform-origin: top left;"></iframe>
 </div>
 <p class="text-[13px] font-medium tracking-wide text-slate-gray text-center mt-3">Public demo with sample data &middot; Open Live Demo starts on the cover &mdash; click Open desk to enter</p>
 </div>
 <!-- Project details -->
 <div class="p-6 md:p-10">
-<h2 class="text-3xl leading-tight tracking-tight font-bold text-primary">Client Sourcing</h2>
+<h2 class="text-3xl leading-tight tracking-tight font-bold text-primary">SignalDesk</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mt-5 border-l-2 border-electric-blue pl-4 italic">
-A SaaS B2B sales workbench that sources your next clients.
+An AI-powered, signal-driven prospecting platform for B2B outbound sales.
 </p>
 <div class="flex flex-wrap gap-2 mt-5">
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Next.js</span>
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vercel</span>
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Postgres</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">pgvector</span>
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Python</span>
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">JobSpy</span>
 <span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Embeddings</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant mt-6">
-In SaaS sales, the real bottleneck is finding the companies that are most likely to need your product right now. Client Sourcing looks for public demand signals, such as relevant hiring activity on LinkedIn, recent funding, or other business events that suggest active budget and urgency. It turns those signals into structured company records and ranks them against your ICP, so sales teams can focus on the accounts with the strongest potential for cooperation.
+SignalDesk converts unstructured market signals into ranked account intelligence, starting with LinkedIn hiring data and built to ingest broader public intent later. It uses a two-stage retrieval pipeline: SQL filters handle initial account criteria, while local all-MiniLM-L6-v2 embeddings in pgvector (384-d) compute cosine similarity against a target ICP to surface high-demand leads in real time.
 </p>
 <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
 <div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
 <span class="material-symbols-outlined text-electric-blue mt-0.5">sensors</span>
 <div>
-<p class="font-body-md font-semibold text-primary">Signal</p>
-<p class="font-body-md text-sm text-on-surface-variant">LinkedIn hiring, funding, and major strategy shifts, with room for more public events later.</p>
+<p class="font-body-md font-semibold text-primary">Signal Engine</p>
+<p class="font-body-md text-sm text-on-surface-variant">Ingests LinkedIn hiring signals into Postgres with a decoupled, multi-source architecture.</p>
 </div>
 </div>
 <div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
 <span class="material-symbols-outlined text-electric-blue mt-0.5">neurology</span>
 <div>
-<p class="font-body-md font-semibold text-primary">Match</p>
-<p class="font-body-md text-sm text-on-surface-variant">Layer 1 is a hard filter. Layer 2 vectorizes the text for a deeper match between your ICP and the demand.</p>
+<p class="font-body-md font-semibold text-primary">Hybrid ICP Search</p>
+<p class="font-body-md text-sm text-on-surface-variant">Combines SQL filtering with local MiniLM embeddings in pgvector (384-d) for semantic scoring.</p>
 </div>
 </div>
 <div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
 <span class="material-symbols-outlined text-electric-blue mt-0.5">database</span>
 <div>
-<p class="font-body-md font-semibold text-primary">Desk</p>
-<p class="font-body-md text-sm text-on-surface-variant">Companies and signals are stored in Postgres, one reusable row per account.</p>
+<p class="font-body-md font-semibold text-primary">Normalized Data Layer</p>
+<p class="font-body-md text-sm text-on-surface-variant">Entity-level Postgres caching that eliminates redundant scraping and delivers low-latency queries.</p>
 </div>
 </div>
 </div>
