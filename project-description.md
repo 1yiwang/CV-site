@@ -79,22 +79,26 @@ Target: **BYD finance internship, Zurich**. Materials shared with recruiter: per
 
 ---
 
-## Updating `CV.pdf` without Cursor
+## Updating `CV.pdf`
 
-All site download buttons already point at the single file `CV.pdf` (Hero ×2 + Contact). Replacing that file updates every link; HTML does not need hand-edits.
+All Download CV buttons point at root `CV.pdf`. Replacing that file updates every link.
+
+**Preferred (Cursor + Canva MCP):** edit the one-page working copy (`DAHUPeF8cHQ`), then in chat say:
+
+- `更新CV` — export from Canva and overwrite local `CV.pdf` (no commit)
+- `发布CV` — same, then commit and push (Vercel deploys `yiwang.dev`)
+
+Do not edit the 19-page original (`DAGJup8KQPg`). See `.cursor/rules/cv-publish.mdc`.
+
+**Fallback without Canva MCP** (local file you already downloaded):
 
 ```powershell
-# Copy your latest PDF into the repo
 pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf"
-
-# Copy + commit + push (Vercel auto-deploys)
 pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf" -Push
-
-# Also bump ?v= cache-buster on hrefs if CDN/browser serves a stale PDF
 pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf" -Push -CacheBust
 ```
 
-Working / application PDFs may live outside this repo; only run the script when you want the **public** site download to match.
+Working / application PDFs may live outside this repo; only sync when the **public** site download should match.
 
 ---
 

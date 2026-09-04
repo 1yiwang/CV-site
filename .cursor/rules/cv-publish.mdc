@@ -1,0 +1,34 @@
+---
+description: Publish the Canva working-copy CV to site CV.pdf without a manual download.
+alwaysApply: true
+---
+
+# Canva CV publish
+
+Do **not** edit the 19-page original. Only edit the one-page working copy.
+
+| Role | Design ID | URL |
+|---|---|---|
+| Original (read-only) | `DAGJup8KQPg` | https://www.canva.com/design/DAGJup8KQPg/KIiJ_VcjrRvZ0gxfhcOztQ/edit |
+| Working copy (edit this) | `DAHUPeF8cHQ` | https://www.canva.com/d/8ZE2QoHES7nHdWy |
+
+## Triggers (case-insensitive)
+
+| Phrase | Action |
+|---|---|
+| `更新CV` / `sync CV` | Export working copy → overwrite `CV.pdf` locally. **No commit.** |
+| `发布CV` / `publish CV` | Same, then commit `CV.pdf` and push `origin` (Vercel deploys). |
+
+Never overwrite `CV.pdf` or push unless one of these phrases (or an equally explicit ask) is in the latest user message.
+
+## Agent steps
+
+1. Canva MCP `get-export-formats` on `DAHUPeF8cHQ`, then `export-design` as `pdf` (`pages: [1]`, `size: a4` if supported).
+2. Download immediately (signed URL expires):
+   `pwsh ./scripts/sync-cv.ps1 -Url "<export-url>"`  
+   Add `-Push` only for **发布CV**. Add `-CacheBust` if a stale PDF was served before.
+3. If this is a new calendar month and no `CV-<mon>.pdf` exists (e.g. `CV-sep.pdf`), copy the new file there too and include it in the commit.
+4. Do not edit `index.html` unless `-CacheBust` ran.
+5. After push, give the commit SHA and remind that `yiwang.dev/CV.pdf` may take a minute.
+
+Canva MCP must already be authenticated. If it `needsAuth`, run `mcp_auth` first.

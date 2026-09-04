@@ -3,15 +3,18 @@
 # All Download CV links already point at root `CV.pdf` — no HTML edits needed.
 # Usage:
 #   pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf"
-#   pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf" -Push
-#   pwsh ./scripts/sync-cv.ps1 -Source "D:\path\to\your-latest.pdf" -Push -CacheBust
+#   pwsh ./scripts/sync-cv.ps1 -Url "https://signed-canva-export/..."
+#   pwsh ./scripts/sync-cv.ps1 -Url "..." -Push
+#   pwsh ./scripts/sync-cv.ps1 -Url "..." -Push -CacheBust
 #
+# Prefer Cursor phrase `发布CV` (agent exports Canva → this script → commit/push).
+# -Url      : download a signed Canva export URL straight into CV.pdf
 # -Push     : git add CV.pdf, commit, push origin (triggers Vercel deploy)
 # -CacheBust: append/update ?v=YYYYMMDDHHMMSS on every CV.pdf href so browsers/CDN don't serve a stale file
 
 param(
-    [Parameter(Mandatory = $true)]
     [string]$Source,
+    [string]$Url,
 
     [switch]$Push,
     [switch]$CacheBust
@@ -21,11 +24,28 @@ $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $dest = Join-Path $repoRoot "CV.pdf"
 
+if ($Url -and $Source) {
+    Write-Error "Pass only one of -Url or -Source."
+}
+if (-not $Url -and -not $Source) {
+    Write-Error "Pass -Url (Canva export) or -Source (local PDF)."
+}
+
+if ($Url) {
+    $tmp = Join-Path $env:TEMP ("cv-canva-{0}.pdf" -f [guid]::NewGuid().ToString("N"))
+    Write-Host "Downloading Canva export..."
+    Invoke-WebRequest -Uri $Url -OutFile $tmp -UseBasicParsing
+    $Source = $tmp
+}
+
 if (-not (Test-Path -LiteralPath $Source)) {
     Write-Error "Source PDF not found: $Source"
 }
 
 Copy-Item -LiteralPath $Source -Destination $dest -Force
+if ($Url) {
+    Remove-Item -LiteralPath $Source -Force -ErrorAction SilentlyContinue
+}
 Write-Host "Updated: $dest"
 Write-Host ("Size: {0:N0} bytes" -f (Get-Item -LiteralPath $dest).Length)
 
