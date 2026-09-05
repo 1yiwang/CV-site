@@ -46,6 +46,22 @@ Copy-Item -LiteralPath $Source -Destination $dest -Force
 if ($Url) {
     Remove-Item -LiteralPath $Source -Force -ErrorAction SilentlyContinue
 }
+
+# Working copy may have a draft second page; the site CV is page 1 only.
+python -c @"
+from pathlib import Path
+import pypdf
+p = Path(r'$dest')
+r = pypdf.PdfReader(str(p))
+n = len(r.pages)
+print(f'PDF pages: {n}')
+if n > 1:
+    w = pypdf.PdfWriter()
+    w.add_page(r.pages[0])
+    w.write(str(p))
+    print('Kept first page only')
+"@
+
 Write-Host "Updated: $dest"
 Write-Host ("Size: {0:N0} bytes" -f (Get-Item -LiteralPath $dest).Length)
 
