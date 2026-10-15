@@ -198,6 +198,80 @@ Building practical AI systems from 0 to 1. This page features live experiments a
 </p>
 </div>
 </section>
+<!-- Featured Project: Service Desk Copilot -->
+<section class="px-margin-mobile md:px-margin-desktop pb-24" id="ServiceDeskCopilot">
+<article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
+<!-- Top: meta header -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 px-6 md:px-10 pt-8 pb-2 border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="inline-flex w-2 h-2 rounded-full bg-electric-blue animate-pulse"></span>
+<span class="text-[12px] font-semibold uppercase tracking-[0.16em] text-slate-blue">Live demo &middot; hackathon build</span>
+</div>
+<span class="text-[13px] font-medium tracking-wide text-slate-blue tabular-nums">September 2026</span>
+</div>
+<!-- Live demo -->
+<div class="bg-surface-container-high px-4 py-6 md:px-10 md:py-10">
+<div id="deskFrameWrap" class="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg border border-border-subtle bg-surface-white relative">
+<iframe id="deskFrame" src="https://hack2026.yiwang.dev/desk.html" title="Service Desk Copilot public demo" loading="lazy" scrolling="no" class="border-0" style="transform-origin: top left;"></iframe>
+</div>
+<p class="text-[13px] font-medium tracking-wide text-slate-gray text-center mt-3">Public demo with challenge tickets &middot; Open Live Demo &mdash; start on the desk (try #8)</p>
+</div>
+<!-- Project details -->
+<div class="p-6 md:p-10">
+<h2 class="text-3xl leading-tight tracking-tight font-bold text-primary">Service Desk Copilot</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-5 border-l-2 border-electric-blue pl-4 italic">
+Operational service desks waste time on mislabeled tickets &mdash; this sidecar drafts the route and reply, then waits for a human.
+</p>
+<div class="flex flex-wrap gap-2 mt-5">
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Python</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Rules engine</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Chroma</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">OpenAI</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Apertus</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Agent tools</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">RAG</span>
+<span class="font-label-mono text-[11px] uppercase tracking-widest text-on-surface bg-surface-container-low border border-border-subtle px-3 py-1 rounded-full">Vercel</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-6">
+Service desk analysts at Swiss Life operational desks still decide every ticket. Service Desk Copilot is a sidecar for that queue: it reads an incoming Jira-style ticket, proposes seven triage fields, pulls similar resolved cases, and drafts a requester comment. Rules and a service catalog resolve service, team, and priority before any chat model runs; retrieval corroborates; a light LLM fills low-confidence fields and a heavier model writes the draft behind a code gate. The analyst approves, edits, or rejects&mdash;nothing auto-closes. Built solo in 36 hours for the Swiss Life challenge at Swiss {ai} Weeks Zurich Hackathon 2026 (Sep 24&ndash;25), with an OpenAI default path and Apertus as a Swiss open-weights option. On the challenge set it surfaces 4/20 mislabel traps, cuts review reading volume ~28% vs full ticket text, and rules-routes in under a second.
+</p>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">rule</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Rules First</p>
+<p class="font-body-md text-sm text-on-surface-variant">Catalog and body tokens route service, team, and priority before any chat call.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">draft</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Evidence Draft</p>
+<p class="font-body-md text-sm text-on-surface-variant">Similar cases and a gated requester comment sit next to the decision card.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 rounded-lg border border-border-subtle bg-surface-container-low/60 p-4">
+<span class="material-symbols-outlined text-electric-blue mt-0.5">verified_user</span>
+<div>
+<p class="font-body-md font-semibold text-primary">Human Loop</p>
+<p class="font-body-md text-sm text-on-surface-variant">Approve, edit, or reject &mdash; feedback writes back; tickets never auto-close.</p>
+</div>
+</div>
+</div>
+<!-- CTA buttons -->
+<div class="mt-10 flex flex-wrap gap-3">
+<a href="https://hack2026.yiwang.dev" target="_blank" rel="noopener" class="bg-primary-container text-on-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-electric-blue transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">open_in_new</span>
+Open Live Demo
+</a>
+<a href="https://github.com/1yiwang/2026zurichhackthon" target="_blank" rel="noopener" class="border border-border-subtle text-primary px-6 py-3 rounded font-body-md font-semibold hover:bg-surface-container-low transition-all duration-150 active:scale-95 inline-flex items-center gap-2">
+<span class="material-symbols-outlined">code</span>
+View on GitHub
+</a>
+</div>
+</div>
+</article>
+</section>
 <!-- Featured Project: Right Prospect -->
 <section class="px-margin-mobile md:px-margin-desktop pb-24" id="RightProspect">
 <article class="bento-card bg-surface-white border border-border-subtle rounded-xl overflow-hidden">
@@ -491,6 +565,22 @@ This space is reserved for upcoming AI experiments &mdash; agents, evaluation ha
 </div>
 </footer>
 <script>
+  (function () {
+    var BASE_W = 1440;
+    var BASE_H = 900;
+    var wrap = document.getElementById("deskFrameWrap");
+    var frame = document.getElementById("deskFrame");
+    if (!wrap || !frame) return;
+    function fit() {
+      var scale = wrap.clientWidth / BASE_W;
+      frame.style.width = BASE_W + "px";
+      frame.style.height = BASE_H + "px";
+      frame.style.transform = "scale(" + scale + ")";
+      wrap.style.height = BASE_H * scale + "px";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  })();
   (function () {
     var BASE_W = 1440;
     var BASE_H = 900;
